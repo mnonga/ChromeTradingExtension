@@ -1,0 +1,38 @@
+{
+  "name": "JChrome Extension",
+  "version": "1.0.0",
+  "description": "My chrome tools",
+  "manifest_version": 3,
+  "author": "Michée NONGA",
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "JChrome Extension",
+    "default_icon": "icon-128.png"
+  },
+  "permissions": [
+    "webRequest",
+    "activeTab",
+    "scripting",
+    "declarativeNetRequest",
+    "declarativeNetRequestFeedback",
+    "declarativeWebRequest",
+    "*://*/*"
+  ],
+  "content_scripts": [
+    {
+      "js": ["scripts/content.js"],
+      "matches": ["*://*/*"]
+    }
+  ],
+  "background": {
+    "service_worker": "service.js"
+  },
+  "devtools_page": "devtools_page.html",
+  "declarative_net_request": {
+    "rule_resources": [{
+      "id": "ruleset_1",
+      "enabled": true,
+      "path": "rules.json"
+    }]
+  }
+}
